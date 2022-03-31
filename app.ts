@@ -40,8 +40,14 @@ class App {
     private routes(): void {
         this.app.use('/api', Routes);
 
-        this.app.use('*', (req, res) => {
+        this.app.use('*', (req : any, res : any) => {
             res.send("Request invalido");
+        });
+        this.app.options("/*", (req : any, res : any) => {
+            res.header('Access-Control-Allow-Origin', '*');
+            res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+            res.header('Access-Control-Allow-Headers', '*');
+            res.status(204).send();
         });
     }
 }

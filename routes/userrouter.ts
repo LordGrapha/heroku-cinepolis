@@ -5,7 +5,8 @@ import * as jwt from 'jsonwebtoken';
 
 const app = express.Router();
 
-app.post("/login", (req, res, next) => {         
+app.post("/login", (req, res, next) => {      
+    res.header('Access-Control-Allow-Origin', '*');    
     UserController.getInstance().login(req.body)
         .then((data: any) => {       
             //data.rows brings the dataset array with all objects inside.   
@@ -17,6 +18,7 @@ app.post("/login", (req, res, next) => {
 });
 
 app.post("/signUp", (req, res, next) => {  
+    res.header('Access-Control-Allow-Origin', '*'); 
     UserController.getInstance().register(req.body)
         .then((data: any) => {       
             //data.rows brings the dataset array with all objects inside.
@@ -28,7 +30,8 @@ app.post("/signUp", (req, res, next) => {
         });
 });
 
-app.get("/list", (req, res, next) => {              
+app.get("/list", (req, res, next) => {       
+    res.header('Access-Control-Allow-Origin', '*');        
   UserController.getInstance().list()
       .then((data) => {       
           //data.rows brings the dataset array with all objects inside.   
@@ -40,7 +43,8 @@ app.get("/list", (req, res, next) => {
       });
 });
 
-app.get("/:email", (req, res, next) => {              
+app.get("/:email", (req, res, next) => {     
+    res.header('Access-Control-Allow-Origin', '*');          
   UserController.getInstance().findUser(req.params.email)
       .then((data) => {       
           //data.rows brings the dataset array with all objects inside.   
@@ -52,7 +56,8 @@ app.get("/:email", (req, res, next) => {
       });
 });
 
-app.put("/delete", (req, res, next) => {          
+app.put("/delete", (req, res, next) => {     
+    res.header('Access-Control-Allow-Origin', '*');      
   UserController.getInstance().delete(req.body)
       .then((data) => {       
           //data.rows brings the dataset array with all objects inside.   
@@ -64,7 +69,8 @@ app.put("/delete", (req, res, next) => {
       });
 });
 
-app.put("/add", (req, res, next) => {          
+app.put("/add", (req, res, next) => {        
+    res.header('Access-Control-Allow-Origin', '*');   
   UserController.getInstance().add(req.body)
       .then((data) => {       
           //data.rows brings the dataset array with all objects inside.   
@@ -76,7 +82,8 @@ app.put("/add", (req, res, next) => {
       });
 });
 
-app.put("/update/:user_id", (req, res, next) => {          
+app.put("/update/:user_id", (req, res, next) => {  
+    res.header('Access-Control-Allow-Origin', '*');         
   UserController.getInstance().update(req.params.user_id, req.body)
       .then((data) => {       
           //data.rows brings the dataset array with all objects inside.   

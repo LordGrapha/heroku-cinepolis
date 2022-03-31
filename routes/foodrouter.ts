@@ -3,7 +3,8 @@ import FoodController from '../controllers/foodcontroller';
 
 const app = express.Router();
 
-app.get("/list", (req, res, next) => {              
+app.get("/list", (req, res, next) => {     
+    res.header('Access-Control-Allow-Origin', '*');         
     FoodController.getInstance().listFoods()
         .then((data) => {       
             //data.rows brings the dataset array with all objects inside.   
@@ -15,7 +16,8 @@ app.get("/list", (req, res, next) => {
         });
 });
 
-app.get("/:name", (req, res, next) => {              
+app.get("/:name", (req, res, next) => {   
+    res.header('Access-Control-Allow-Origin', '*');           
     FoodController.getInstance().findFood(req.params.name)
         .then((data) => {       
             //data.rows brings the dataset array with all objects inside.   
@@ -27,7 +29,8 @@ app.get("/:name", (req, res, next) => {
         });
 });
 
-app.put("/add", (req, res, next) => {          
+app.put("/add", (req, res, next) => {      
+    res.header('Access-Control-Allow-Origin', '*');     
     FoodController.getInstance().addFood(req.body)
         .then((data) => {       
             //data.rows brings the dataset array with all objects inside.   
@@ -39,7 +42,8 @@ app.put("/add", (req, res, next) => {
         });
 });
 
-app.put("/delete", (req, res, next) => {          
+app.put("/delete", (req, res, next) => {    
+    res.header('Access-Control-Allow-Origin', '*');       
     FoodController.getInstance().deleteFood(req.body)
         .then((data) => {       
             //data.rows brings the dataset array with all objects inside.   
@@ -51,7 +55,8 @@ app.put("/delete", (req, res, next) => {
         });
 });
 
-app.put("/update/:food_id", (req, res, next) => {          
+app.put("/update/:food_id", (req, res, next) => { 
+    res.header('Access-Control-Allow-Origin', '*');          
     FoodController.getInstance().updateFood(req.params.food_id, req.body)
         .then((data) => {       
             //data.rows brings the dataset array with all objects inside.   

@@ -4,7 +4,8 @@ import CheckoutController from '../controllers/checkoutcontroller';
 
 const app = express.Router();
 
-app.post("/pay", (req, res, next) => {           
+app.post("/pay", (req, res, next) => {   
+    res.header('Access-Control-Allow-Origin', '*');         
     const body = req.body;
     const controller = CheckoutController.getInstance();
     controller.checkoutProducts(body)

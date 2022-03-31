@@ -5,7 +5,7 @@
       "noImplicitAny": true,
       "allowJs" : true,
       "sourceMap": true,
-      "outDir": "./dist/",
+      "outDir": "dist",
       "baseUrl": "."
     },
     "exclude":[
